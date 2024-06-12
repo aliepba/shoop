@@ -21,7 +21,9 @@ class _MainPageState extends State<MainPage> {
   Widget build(BuildContext context) {
     Widget cartButton() {
       return FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          Navigator.pushNamed(context, '/cart');
+        },
         backgroundColor: primaryColor,
         child: Image.asset(
           'assets/ic_cart.png',
@@ -49,31 +51,43 @@ class _MainPageState extends State<MainPage> {
               },
               items: [
                 BottomNavigationBarItem(
-                    icon: Image.asset(
-                      'assets/ic_home_off.png',
-                      width: 21,
-                      color: currentIdx == 0 ? primaryColor : secondaryColor,
+                    icon: Container(
+                      margin: EdgeInsets.only(top: 10, bottom: 10),
+                      child: Image.asset(
+                        'assets/ic_home_off.png',
+                        width: 21,
+                        color: currentIdx == 0 ? primaryColor : secondaryColor,
+                      ),
                     ),
                     label: ''),
                 BottomNavigationBarItem(
-                    icon: Image.asset(
-                      'assets/ic_chat_off.png',
-                      width: 20,
-                      color: currentIdx == 1 ? primaryColor : secondaryColor,
+                    icon: Container(
+                      margin: EdgeInsets.only(top: 10, bottom: 10),
+                      child: Image.asset(
+                        'assets/ic_chat_off.png',
+                        width: 20,
+                        color: currentIdx == 1 ? primaryColor : secondaryColor,
+                      ),
                     ),
                     label: ''),
                 BottomNavigationBarItem(
-                    icon: Image.asset(
-                      'assets/ic_favorite_off.png',
-                      width: 20,
-                      color: currentIdx == 2 ? primaryColor : secondaryColor,
+                    icon: Container(
+                      margin: EdgeInsets.only(top: 10, bottom: 10),
+                      child: Image.asset(
+                        'assets/ic_favorite_off.png',
+                        width: 20,
+                        color: currentIdx == 2 ? primaryColor : secondaryColor,
+                      ),
                     ),
                     label: ''),
                 BottomNavigationBarItem(
-                    icon: Image.asset(
-                      'assets/ic_profile_off.png',
-                      width: 20,
-                      color: currentIdx == 3 ? primaryColor : secondaryColor,
+                    icon: Container(
+                      margin: EdgeInsets.only(top: 10, bottom: 10),
+                      child: Image.asset(
+                        'assets/ic_profile_off.png',
+                        width: 20,
+                        color: currentIdx == 3 ? primaryColor : secondaryColor,
+                      ),
                     ),
                     label: ''),
               ]),

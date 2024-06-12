@@ -11,7 +11,9 @@ dependencies:
     sdk: flutter
   google_fonts: ^6.1.0
   carousel_slider: ^4.2.1
-  cupertino_icons: ^1.0.0 
+  cupertino_icons: ^1.0.0
+  provider: ^5.0.0
+  http: ^1.2.1
 
 dev_dependencies:
   flutter_test:
