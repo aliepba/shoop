@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:shoop/models/product_model.dart';
+import 'package:shoop/pages/product_page.dart';
 import 'package:shoop/theme.dart';
 
 class ProductNew extends StatelessWidget {
-  const ProductNew({super.key});
-
+  final ProductModel product;
+  ProductNew(this.product);
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.pushNamed(context, '/product');
+        Navigator.push(context,
+            MaterialPageRoute(builder: (context) => ProductPage(product)));
       },
       child: Container(
         margin: EdgeInsets.only(
@@ -33,7 +36,7 @@ class ProductNew extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Running',
+                  product.category.name,
                   style: primaryTextStyle.copyWith(
                       fontSize: 12, fontWeight: medium),
                 ),
@@ -41,12 +44,15 @@ class ProductNew extends StatelessWidget {
                   height: 6,
                 ),
                 Text(
-                  'Adidas Running 2.0',
+                  product.name,
                   style: blackTextStyle.copyWith(
-                      fontSize: 16, fontWeight: semiBold),
+                    fontSize: 16,
+                    fontWeight: semiBold,
+                  ),
+                  maxLines: 1,
                 ),
                 Text(
-                  '\$68,47',
+                  '\$${product.price}',
                   style: priceTextStyle.copyWith(fontWeight: medium),
                 )
               ],

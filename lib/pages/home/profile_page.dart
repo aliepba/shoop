@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:shoop/models/user_model.dart';
+import 'package:shoop/providers/auth_provider.dart';
+import 'package:provider/provider.dart';
 import 'package:shoop/theme.dart';
 
 class ProfilePage extends StatelessWidget {
@@ -6,6 +9,9 @@ class ProfilePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    AuthProvider authProvider = Provider.of<AuthProvider>(context);
+    UserModel user = authProvider.user;
+
     Widget header() {
       return AppBar(
         backgroundColor: backgroundColor1,
@@ -29,12 +35,12 @@ class ProfilePage extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'Hallo, Adudu',
+                    'Hallo, ${user.name}',
                     style: primaryTextStyle.copyWith(
                         fontSize: 24, fontWeight: semiBold),
                   ),
                   Text(
-                    '@adudu',
+                    '${user.email}',
                     style: subtitleTextStyle.copyWith(fontSize: 16),
                   )
                 ],

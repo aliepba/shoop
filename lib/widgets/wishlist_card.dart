@@ -1,11 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:provider/provider.dart';
+import 'package:shoop/models/product_model.dart';
+import 'package:shoop/providers/product_provider.dart';
 import 'package:shoop/theme.dart';
 
 class WishlistCard extends StatelessWidget {
-  const WishlistCard({super.key});
+  final ProductModel product;
+  WishlistCard(this.product);
 
   @override
   Widget build(BuildContext context) {
+    ProductProvider productProvider = Provider.of<ProductProvider>(context);
+
     return Container(
       margin: EdgeInsets.only(top: 20),
       padding: EdgeInsets.only(top: 10, left: 12, bottom: 14, right: 20),
@@ -27,19 +34,24 @@ class WishlistCard extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'Terrex Urban Low',
+                product.name,
                 style: primaryTextStyle.copyWith(fontWeight: semiBold),
               ),
               Text(
-                '\$143,98',
+                '\$${product.price}',
                 style: priceTextStyle,
               )
             ],
           ),
         ),
-        Image.asset(
-          'assets/img_wishlist_on.png',
-          width: 34,
+        GestureDetector(
+          onTap: () {
+            productProvider.setProduct(product);
+          },
+          child: Image.asset(
+            'assets/img_wishlist_on.png',
+            width: 34,
+          ),
         )
       ]),
     );

@@ -1,9 +1,13 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:shoop/models/product_model.dart';
+import 'package:shoop/providers/product_provider.dart';
 import 'package:shoop/theme.dart';
 
 class ProductPage extends StatefulWidget {
-  ProductPage({super.key});
+  final ProductModel product;
+  ProductPage(this.product);
 
   @override
   State<ProductPage> createState() => _ProductPageState();
@@ -33,6 +37,8 @@ class _ProductPageState extends State<ProductPage> {
 
   @override
   Widget build(BuildContext context) {
+    ProductProvider productProvider = Provider.of<ProductProvider>(context);
+
     Future<void> showSuccessDialog() async {
       return showDialog(
           context: context,
@@ -196,12 +202,12 @@ class _ProductPageState extends State<ProductPage> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          'NB 550',
+                          widget.product.name,
                           style: primaryTextStyle.copyWith(
                               fontSize: 18, fontWeight: semiBold),
                         ),
                         Text(
-                          'Daily Activity',
+                          widget.product.category.name,
                           style: secondaryTextStyle.copyWith(fontSize: 12),
                         )
                       ],
@@ -209,10 +215,9 @@ class _ProductPageState extends State<ProductPage> {
                   ),
                   GestureDetector(
                     onTap: () {
-                      setState(() {
-                        isWishList = !isWishList;
-                      });
-                      if (isWishList) {
+                      productProvider.setProduct(widget.product);
+
+                      if (productProvider.isWishList(widget.product)) {
                         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                             backgroundColor: secondaryColor,
                             content: Text(
@@ -229,7 +234,7 @@ class _ProductPageState extends State<ProductPage> {
                       }
                     },
                     child: Image.asset(
-                      isWishList
+                      productProvider.isWishList(widget.product)
                           ? 'assets/img_wishlist_on.png'
                           : 'assets/img_wishlist.png',
                       width: 46,
@@ -254,7 +259,7 @@ class _ProductPageState extends State<ProductPage> {
                       style: primaryTextStyle,
                     ),
                     Text(
-                      '\$85,98',
+                      '\$${widget.product.price}',
                       style: priceTextStyle.copyWith(
                           fontSize: 16, fontWeight: semiBold),
                     )
@@ -277,7 +282,7 @@ class _ProductPageState extends State<ProductPage> {
                     height: 12,
                   ),
                   Text(
-                    'Unpaved trails and mixed surfaces are easy when you have the traction and support you need. Casual enough for the daily commute.',
+                    widget.product.description,
                     style: subtitleTextStyle.copyWith(fontWeight: light),
                     textAlign: TextAlign.justify,
                   ),

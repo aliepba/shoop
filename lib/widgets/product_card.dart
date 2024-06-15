@@ -1,14 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:shoop/models/product_model.dart';
+import 'package:shoop/pages/product_page.dart';
 import 'package:shoop/theme.dart';
 
-class ProductCart extends StatelessWidget {
-  const ProductCart({super.key});
+class ProductCard extends StatelessWidget {
+  final ProductModel product;
+  ProductCard(this.product);
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.pushNamed(context, '/product');
+        Navigator.push(context,
+            MaterialPageRoute(builder: (context) => ProductPage(product)));
       },
       child: Container(
         width: 215,
@@ -34,23 +38,24 @@ class ProductCart extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'Hiking',
+                    product.category.name,
                     style: primaryTextStyle.copyWith(fontSize: 12),
                   ),
                   SizedBox(
                     height: 6,
                   ),
                   Text(
-                    'COURT VISION 2.0',
+                    product.name,
                     style: blackTextStyle.copyWith(
                         fontSize: 18, fontWeight: semiBold),
                     overflow: TextOverflow.ellipsis,
+                    maxLines: 1,
                   ),
                   SizedBox(
                     height: 6,
                   ),
                   Text(
-                    '\$68,67',
+                    '\$${product.price}',
                     style: priceTextStyle.copyWith(
                         fontSize: 14, fontWeight: medium),
                   )

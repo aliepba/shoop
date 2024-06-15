@@ -3,8 +3,9 @@ import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
 import 'package:shoop/models/user_model.dart';
 import 'package:shoop/providers/auth_provider.dart';
+import 'package:shoop/providers/product_provider.dart';
 import 'package:shoop/theme.dart';
-import 'package:shoop/widgets/product_cart.dart';
+import 'package:shoop/widgets/product_card.dart';
 import 'package:shoop/widgets/product_new.dart';
 
 class HomePage extends StatelessWidget {
@@ -13,6 +14,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     AuthProvider authProvider = Provider.of<AuthProvider>(context);
+    ProductProvider productProvider = Provider.of<ProductProvider>(context);
     UserModel user = authProvider.user;
 
     Widget header() {
@@ -139,12 +141,9 @@ class HomePage extends StatelessWidget {
                 width: defaultMargin,
               ),
               Row(
-                children: [
-                  ProductCart(),
-                  ProductCart(),
-                  ProductCart(),
-                  ProductCart(),
-                ],
+                children: productProvider.products
+                    .map((product) => ProductCard(product))
+                    .toList(),
               )
             ],
           ),
@@ -167,12 +166,9 @@ class HomePage extends StatelessWidget {
       return Container(
         margin: EdgeInsets.only(top: 14),
         child: Column(
-          children: [
-            ProductNew(),
-            ProductNew(),
-            ProductNew(),
-            ProductNew(),
-          ],
+          children: productProvider.products
+              .map((product) => ProductNew(product))
+              .toList(),
         ),
       );
     }

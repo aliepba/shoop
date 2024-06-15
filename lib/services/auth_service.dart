@@ -46,7 +46,6 @@ class AuthService {
     if (response.statusCode == 200) {
       var res = jsonDecode((response.body));
       var data = res['data'];
-      print(data);
       UserModel user = UserModel.fromJson(data);
       // ignore: prefer_interpolation_to_compose_strings
       user.token = 'Bearer ' + data['token'];

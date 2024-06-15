@@ -11,7 +11,8 @@ import 'package:shoop/pages/sign_in_page.dart';
 import 'package:shoop/pages/sign_up_page.dart';
 import 'package:shoop/pages/splash_page.dart';
 import 'package:shoop/providers/auth_provider.dart';
-import 'package:shoop/widgets/product_cart.dart';
+import 'package:shoop/providers/product_provider.dart';
+import 'package:shoop/widgets/product_card.dart';
 
 void main() {
   runApp(const MainApp());
@@ -23,7 +24,10 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
-      providers: [ChangeNotifierProvider(create: (context) => AuthProvider())],
+      providers: [
+        ChangeNotifierProvider(create: (context) => AuthProvider()),
+        ChangeNotifierProvider(create: (context) => ProductProvider())
+      ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         routes: {
@@ -33,7 +37,7 @@ class MainApp extends StatelessWidget {
           '/home': (context) => MainPage(),
           '/detail-chat': (context) => DetailChatPage(),
           '/edit-profile': (context) => EditProfile(),
-          '/product': (context) => ProductPage(),
+          // '/product': (context) => ProductPage(),
           '/cart': (context) => CartPage(),
           '/checkout': (context) => CheckoutPage(),
           '/checkout-success': (context) => CheckoutSuccess()

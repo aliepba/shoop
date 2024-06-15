@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:shoop/theme.dart';
+import 'package:shoop/models/user_model.dart';
+import 'package:shoop/providers/auth_provider.dart';
+import 'package:provider/provider.dart';
 
 class EditProfile extends StatelessWidget {
   const EditProfile({super.key});
 
   @override
   Widget build(BuildContext context) {
+    AuthProvider authProvider = Provider.of<AuthProvider>(context);
+    UserModel user = authProvider.user;
+
     PreferredSizeWidget header() {
       return AppBar(
         leading: IconButton(
@@ -71,9 +77,9 @@ class EditProfile extends StatelessWidget {
                   image: DecorationImage(
                       image: AssetImage('assets/img_profile.png'))),
             ),
-            nameInput('Adudu dudu', 'Name'),
-            nameInput('@adudu', 'Username'),
-            nameInput('Adud@gmail.com', 'Email')
+            nameInput('${user.name}', 'Name'),
+            nameInput('${user.phone}', 'Phone'),
+            nameInput('${user.email}', 'Email')
           ],
         ),
       );
