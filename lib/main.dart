@@ -6,7 +6,6 @@ import 'package:shoop/pages/checkout_success.dart';
 import 'package:shoop/pages/detail_chat.dart';
 import 'package:shoop/pages/edit_profile.dart';
 import 'package:shoop/pages/home/main_page.dart';
-import 'package:shoop/pages/product_page.dart';
 import 'package:shoop/pages/sign_in_page.dart';
 import 'package:shoop/pages/sign_up_page.dart';
 import 'package:shoop/pages/splash_page.dart';
@@ -14,7 +13,6 @@ import 'package:shoop/providers/auth_provider.dart';
 import 'package:shoop/providers/cart_provider.dart';
 import 'package:shoop/providers/product_provider.dart';
 import 'package:shoop/providers/transaction_provider.dart';
-import 'package:shoop/widgets/product_card.dart';
 
 void main() {
   runApp(const MainApp());
