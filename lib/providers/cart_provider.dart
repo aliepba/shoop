@@ -45,7 +45,7 @@ class CartProvider with ChangeNotifier {
   totalItems() {
     int total = 0;
     for (var item in _carts) {
-      total += total;
+      total += (total + item.quantity);
     }
     return total;
   }
