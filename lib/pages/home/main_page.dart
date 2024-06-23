@@ -35,63 +35,69 @@ class _MainPageState extends State<MainPage> {
     Widget customBottomNav() {
       return ClipRRect(
         borderRadius: BorderRadius.vertical(top: Radius.circular(30)),
-        child: BottomAppBar(
-          shape: CircularNotchedRectangle(),
-          notchMargin: 12,
-          clipBehavior: Clip.antiAlias,
-          color: backgroundColor2,
-          child: BottomNavigationBar(
-              backgroundColor: backgroundColor4,
-              type: BottomNavigationBarType.fixed,
-              currentIndex: currentIdx,
-              onTap: (value) {
-                setState(() {
-                  currentIdx = value;
-                });
-              },
-              items: [
-                BottomNavigationBarItem(
-                    icon: Container(
-                      margin: EdgeInsets.only(top: 10, bottom: 10),
-                      child: Image.asset(
-                        'assets/ic_home_off.png',
-                        width: 21,
-                        color: currentIdx == 0 ? primaryColor : secondaryColor,
-                      ),
+        child: BottomNavigationBar(
+            backgroundColor: backgroundColor4,
+            type: BottomNavigationBarType.fixed,
+            currentIndex: currentIdx,
+            onTap: (value) {
+              setState(() {
+                currentIdx = value;
+              });
+            },
+            selectedItemColor: primaryColor,
+            unselectedItemColor: Colors.grey,
+            items: [
+              BottomNavigationBarItem(
+                  icon: Container(
+                    margin: EdgeInsets.only(top: 20),
+                    child: Image.asset(
+                      'assets/ic_home_off.png',
+                      width: 21,
+                      color: currentIdx == 0 ? primaryColor : secondaryColor,
                     ),
-                    label: ''),
-                BottomNavigationBarItem(
-                    icon: Container(
-                      margin: EdgeInsets.only(top: 10, bottom: 10),
-                      child: Image.asset(
-                        'assets/ic_chat_off.png',
-                        width: 20,
-                        color: currentIdx == 1 ? primaryColor : secondaryColor,
-                      ),
+                  ),
+                  label: 'Home'),
+              BottomNavigationBarItem(
+                  icon: Container(
+                    margin: EdgeInsets.only(top: 20),
+                    child: Image.asset(
+                      'assets/ic_chat_off.png',
+                      width: 20,
+                      color: currentIdx == 1 ? primaryColor : secondaryColor,
                     ),
-                    label: ''),
-                BottomNavigationBarItem(
-                    icon: Container(
-                      margin: EdgeInsets.only(top: 10, bottom: 10),
-                      child: Image.asset(
-                        'assets/ic_favorite_off.png',
-                        width: 20,
-                        color: currentIdx == 2 ? primaryColor : secondaryColor,
-                      ),
+                  ),
+                  label: 'Chat'),
+              BottomNavigationBarItem(
+                  icon: Container(
+                    margin: EdgeInsets.only(top: 20),
+                    child: Image.asset(
+                      'assets/ic_favorite_off.png',
+                      width: 20,
+                      color: currentIdx == 2 ? primaryColor : secondaryColor,
                     ),
-                    label: ''),
-                BottomNavigationBarItem(
-                    icon: Container(
-                      margin: EdgeInsets.only(top: 10, bottom: 10),
-                      child: Image.asset(
-                        'assets/ic_profile_off.png',
-                        width: 20,
-                        color: currentIdx == 3 ? primaryColor : secondaryColor,
-                      ),
+                  ),
+                  label: 'Wishlist'),
+              BottomNavigationBarItem(
+                icon: Container(
+                  margin: EdgeInsets.only(top: 20),
+                  child: Image.asset(
+                    'assets/ic_profile_off.png',
+                    width: 20,
+                    color: currentIdx == 3 ? primaryColor : secondaryColor,
+                  ),
+                ),
+                label: 'User',
+              ),
+              BottomNavigationBarItem(
+                  icon: Container(
+                    margin: EdgeInsets.only(top: 20),
+                    child: Icon(
+                      Icons.document_scanner,
+                      color: currentIdx == 4 ? primaryColor : secondaryColor,
                     ),
-                    label: ''),
-              ]),
-        ),
+                  ),
+                  label: 'Tansaction'),
+            ]),
       );
     }
 
@@ -117,7 +123,7 @@ class _MainPageState extends State<MainPage> {
     return Scaffold(
       // backgroundColor: backgroundColor2,
       floatingActionButton: cartButton(),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
       bottomNavigationBar: customBottomNav(),
       body: body(),
     );

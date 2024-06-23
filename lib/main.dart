@@ -4,7 +4,9 @@ import 'package:shoop/pages/cart_page.dart';
 import 'package:shoop/pages/checkout_page.dart';
 import 'package:shoop/pages/checkout_success.dart';
 import 'package:shoop/pages/detail_chat.dart';
+import 'package:shoop/pages/detail_transaction.dart';
 import 'package:shoop/pages/edit_profile.dart';
+import 'package:shoop/pages/history_page.dart';
 import 'package:shoop/pages/home/main_page.dart';
 import 'package:shoop/pages/sign_in_page.dart';
 import 'package:shoop/pages/sign_up_page.dart';
@@ -40,6 +42,8 @@ class MainApp extends StatelessWidget {
           '/detail-chat': (context) => DetailChatPage(),
           '/edit-profile': (context) => EditProfile(),
           // '/product': (context) => ProductPage(),
+          '/detail-transaction': (context) => DetailTransaction(),
+          '/transaction-history': (context) => HistoryPage(),
           '/cart': (context) => CartPage(),
           '/checkout': (context) => CheckoutPage(),
           '/checkout-success': (context) => CheckoutSuccess()

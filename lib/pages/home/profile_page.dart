@@ -93,7 +93,7 @@ class ProfilePage extends StatelessWidget {
               style: primaryTextStyle.copyWith(
                   fontSize: 16, fontWeight: semiBold)),
           menuItem('Edit Profile', '/edit-profile'),
-          menuItem('Your Orders', '/edit-profile'),
+          menuItem('Your Orders', '/transaction-history'),
           menuItem('Help Center', '/edit-profile'),
           SizedBox(
             height: 30,
