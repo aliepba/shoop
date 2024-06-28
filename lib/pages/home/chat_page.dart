@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:shoop/models/message_model.dart';
+import 'package:shoop/providers/auth_provider.dart';
+import 'package:shoop/providers/page_provider.dart';
+import 'package:shoop/services/message_service.dart';
 import 'package:shoop/theme.dart';
 import 'package:shoop/widgets/chat_list.dart';
 
@@ -7,6 +12,9 @@ class ChatPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    AuthProvider authProvider = Provider.of<AuthProvider>(context);
+    PageProvider pageProvider = Provider.of<PageProvider>(context);
+
     Widget header() {
       return AppBar(
         backgroundColor: backgroundColor1,
@@ -18,18 +26,6 @@ class ChatPage extends StatelessWidget {
         elevation: 0,
         automaticallyImplyLeading: false,
       );
-    }
-
-    Widget content() {
-      return Expanded(
-          child: Container(
-        width: double.infinity,
-        color: backgroundColor0,
-        child: ListView(
-          padding: EdgeInsets.symmetric(horizontal: defaultMargin),
-          children: [ChatList()],
-        ),
-      ));
     }
 
     Widget emptyContent() {
@@ -63,7 +59,9 @@ class ChatPage extends StatelessWidget {
             Container(
               height: 44,
               child: TextButton(
-                onPressed: () {},
+                onPressed: () {
+                  pageProvider.currentIndex = 0;
+                },
                 style: TextButton.styleFrom(
                     padding: EdgeInsets.symmetric(horizontal: 24, vertical: 10),
                     backgroundColor: primaryColor,
@@ -79,6 +77,33 @@ class ChatPage extends StatelessWidget {
           ],
         ),
       ));
+    }
+
+    Widget content() {
+      return StreamBuilder<List<MessageModel>>(
+          stream:
+              MessageService().getMessagebyUserId(userId: authProvider.user.id),
+          builder: (context, snapshot) {
+            if (snapshot.hasData) {
+              if (snapshot.data!.length == 0) {
+                return emptyContent();
+              }
+
+              return Expanded(
+                  child: Container(
+                width: double.infinity,
+                color: backgroundColor0,
+                child: ListView(
+                  padding: EdgeInsets.symmetric(horizontal: defaultMargin),
+                  children: [
+                    ChatList(snapshot.data![snapshot.data!.length - 1])
+                  ],
+                ),
+              ));
+            } else {
+              return emptyContent();
+            }
+          });
     }
 
     return Column(

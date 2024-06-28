@@ -5,7 +5,7 @@ class MessageModel {
   int userId;
   String userName;
   String userPhone;
-  bool isFormUser;
+  bool isFromUser;
   ProductModel product;
   DateTime createdAt;
   DateTime updatedAt;
@@ -15,7 +15,7 @@ class MessageModel {
       required this.userId,
       required this.userName,
       required this.userPhone,
-      required this.isFormUser,
+      required this.isFromUser,
       required this.product,
       required this.createdAt,
       required this.updatedAt});
@@ -25,7 +25,7 @@ class MessageModel {
         userId = json['userId'],
         userName = json['userName'],
         userPhone = json['userPhone'],
-        isFormUser = json['isFormUser'],
+        isFromUser = json['isFromUser'],
         product = json['product'].isEmpty
             ? UninitalizedProductModel()
             : ProductModel.fromJson(json['product']),
@@ -38,7 +38,7 @@ class MessageModel {
       'userId': userId,
       'userName': userName,
       'userPhone': userPhone,
-      'isFormUser': isFormUser,
+      'isFromUser': isFromUser,
       'product': product is UninitalizedProductModel ? {} : product.toJson(),
       'createdAt': createdAt.toString(),
       'updatedAt': updatedAt.toString()

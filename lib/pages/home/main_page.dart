@@ -1,11 +1,13 @@
 // ignore_for_file: dead_code
 
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:shoop/pages/home/chat_page.dart';
 import 'package:shoop/pages/home/history_page.dart';
 import 'package:shoop/pages/home/home_page.dart';
 import 'package:shoop/pages/home/profile_page.dart';
 import 'package:shoop/pages/home/wishlist_page.dart';
+import 'package:shoop/providers/page_provider.dart';
 import 'package:shoop/theme.dart';
 
 class MainPage extends StatefulWidget {
@@ -16,10 +18,10 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
-  int currentIdx = 0;
-
   @override
   Widget build(BuildContext context) {
+    PageProvider pageProvider = Provider.of<PageProvider>(context);
+
     Widget cartButton() {
       return FloatingActionButton(
         onPressed: () {
@@ -39,11 +41,9 @@ class _MainPageState extends State<MainPage> {
         child: BottomNavigationBar(
             backgroundColor: backgroundColor4,
             type: BottomNavigationBarType.fixed,
-            currentIndex: currentIdx,
+            currentIndex: pageProvider.currentIndex,
             onTap: (value) {
-              setState(() {
-                currentIdx = value;
-              });
+              pageProvider.currentIndex = value;
             },
             selectedItemColor: primaryColor,
             unselectedItemColor: Colors.grey,
@@ -54,7 +54,9 @@ class _MainPageState extends State<MainPage> {
                     child: Image.asset(
                       'assets/ic_home_off.png',
                       width: 21,
-                      color: currentIdx == 0 ? primaryColor : secondaryColor,
+                      color: pageProvider.currentIndex == 0
+                          ? primaryColor
+                          : secondaryColor,
                     ),
                   ),
                   label: 'Home'),
@@ -64,7 +66,9 @@ class _MainPageState extends State<MainPage> {
                     child: Image.asset(
                       'assets/ic_chat_off.png',
                       width: 20,
-                      color: currentIdx == 1 ? primaryColor : secondaryColor,
+                      color: pageProvider.currentIndex == 1
+                          ? primaryColor
+                          : secondaryColor,
                     ),
                   ),
                   label: 'Chat'),
@@ -74,7 +78,9 @@ class _MainPageState extends State<MainPage> {
                     child: Image.asset(
                       'assets/ic_favorite_off.png',
                       width: 20,
-                      color: currentIdx == 2 ? primaryColor : secondaryColor,
+                      color: pageProvider.currentIndex == 2
+                          ? primaryColor
+                          : secondaryColor,
                     ),
                   ),
                   label: 'Wishlist'),
@@ -84,7 +90,9 @@ class _MainPageState extends State<MainPage> {
                   child: Image.asset(
                     'assets/ic_profile_off.png',
                     width: 20,
-                    color: currentIdx == 3 ? primaryColor : secondaryColor,
+                    color: pageProvider.currentIndex == 3
+                        ? primaryColor
+                        : secondaryColor,
                   ),
                 ),
                 label: 'User',
@@ -94,7 +102,9 @@ class _MainPageState extends State<MainPage> {
                     margin: EdgeInsets.only(top: 20),
                     child: Icon(
                       Icons.document_scanner,
-                      color: currentIdx == 4 ? primaryColor : secondaryColor,
+                      color: pageProvider.currentIndex == 4
+                          ? primaryColor
+                          : secondaryColor,
                     ),
                   ),
                   label: 'Tansaction'),
@@ -103,7 +113,7 @@ class _MainPageState extends State<MainPage> {
     }
 
     Widget body() {
-      switch (currentIdx) {
+      switch (pageProvider.currentIndex) {
         case 0:
           return HomePage();
           break;

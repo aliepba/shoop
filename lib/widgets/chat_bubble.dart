@@ -43,14 +43,14 @@ class ChatBubble extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Court Vision 2.0 Shoes',
+                      product!.name,
                       style: primaryTextStyle,
                     ),
                     SizedBox(
                       height: 4,
                     ),
                     Text(
-                      '\$57,15',
+                      '\$${product!.price}',
                       style: priceTextStyle.copyWith(
                         fontWeight: medium,
                       ),

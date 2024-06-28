@@ -1,11 +1,14 @@
+// ignore_for_file: empty_constructor_bodies
+
 import 'package:flutter/material.dart';
+import 'package:shoop/models/message_model.dart';
 import 'package:shoop/models/product_model.dart';
 import 'package:shoop/pages/detail_chat.dart';
 import 'package:shoop/theme.dart';
 
 class ChatList extends StatelessWidget {
-  const ChatList({super.key});
-
+  final MessageModel message;
+  ChatList(this.message);
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -38,7 +41,7 @@ class ChatList extends StatelessWidget {
                             fontSize: 15, fontWeight: bold),
                       ),
                       Text(
-                        "Hello i'm underwater can you help me",
+                        message.message,
                         style: blackTextStyle.copyWith(fontWeight: light),
                         overflow: TextOverflow.ellipsis,
                       )

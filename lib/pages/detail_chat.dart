@@ -28,7 +28,7 @@ class _DetailChatPageState extends State<DetailChatPage> {
     handleMessage() async {
       await MessageService().addMessage(
           user: authProvider.user,
-          isFormUser: true,
+          isFromUser: true,
           message: messageController.text,
           product: widget.product);
 
@@ -189,7 +189,7 @@ class _DetailChatPageState extends State<DetailChatPage> {
                 ),
                 children: snapshot.data!
                     .map((MessageModel message) => ChatBubble(
-                          isSender: message.isFormUser,
+                          isSender: message.isFromUser,
                           text: message.message,
                           product: message.product,
                         ))

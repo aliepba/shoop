@@ -30,8 +30,8 @@ class ProductModel {
         description = json['description'],
         tags = json['tags'],
         category = CategoryModel.fromJson(json['category']),
-        createdAt = DateTime.parse(json['created_at']),
-        updatedAt = DateTime.parse(json['updated_at']);
+        createdAt = DateTime.parse(json['createdAt']),
+        updatedAt = DateTime.parse(json['updatedAt']);
 
   Map<String, dynamic> toJson() {
     return {
@@ -41,8 +41,8 @@ class ProductModel {
       'description': description,
       'tags': tags,
       'category': category.toJson(),
-      'created_at': createdAt.toString(),
-      'updated_at': updatedAt.toString()
+      'createdAt': createdAt.toString(),
+      'updatedAt': updatedAt.toString()
     };
   }
 }

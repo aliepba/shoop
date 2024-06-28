@@ -4,7 +4,6 @@ import 'package:shoop/theme.dart';
 
 class CheckoutCard extends StatelessWidget {
   final CartModel cart;
-
   CheckoutCard(this.cart);
 
   @override

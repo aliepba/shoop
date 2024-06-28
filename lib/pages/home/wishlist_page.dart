@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:shoop/providers/page_provider.dart';
 import 'package:shoop/providers/product_provider.dart';
 import 'package:shoop/theme.dart';
 import 'package:shoop/widgets/wishlist_card.dart';
@@ -10,6 +11,7 @@ class WishlistPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     ProductProvider productProvider = Provider.of<ProductProvider>(context);
+    PageProvider pageProvider = Provider.of<PageProvider>(context);
 
     Widget header() {
       return AppBar(
@@ -68,7 +70,9 @@ class WishlistPage extends StatelessWidget {
             ),
             Container(
                 child: TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      pageProvider.currentIndex = 0;
+                    },
                     style: TextButton.styleFrom(
                         padding:
                             EdgeInsets.symmetric(vertical: 10, horizontal: 24),

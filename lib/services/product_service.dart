@@ -18,7 +18,6 @@ class ProductService {
       for (var item in data) {
         products.add(ProductModel.fromJson(item));
       }
-
       return products;
     } else {
       throw Exception('Failed Get Products');

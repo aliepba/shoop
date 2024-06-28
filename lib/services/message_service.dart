@@ -16,23 +16,21 @@ class MessageService {
           .map((QuerySnapshot list) {
         var result = list.docs.map<MessageModel>((DocumentSnapshot message) {
           var data = message.data() as Map<String, dynamic>?;
-          print(data);
           return MessageModel.fromJson(data!);
         }).toList();
 
         result.sort((MessageModel a, MessageModel b) =>
             a.createdAt.compareTo(b.createdAt));
-
         return result;
       });
     } catch (e) {
-      throw Exception('Get Data Message Error');
+      throw Exception(e);
     }
   }
 
   Future<void> addMessage(
       {required UserModel user,
-      required bool isFormUser,
+      required bool isFromUser,
       required String message,
       required ProductModel product}) async {
     try {
@@ -40,7 +38,7 @@ class MessageService {
         'userId': user.id,
         'userName': user.name,
         'userPhone': user.phone,
-        'isFromUser': isFormUser,
+        'isFromUser': isFromUser,
         'message': message,
         'product': product is UninitalizedProductModel ? {} : product.toJson(),
         'createdAt': DateTime.now().toString(),
