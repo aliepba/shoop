@@ -10,15 +10,18 @@ class ProductModel {
   DateTime createdAt;
   DateTime updatedAt;
 
-  ProductModel(
-      {required this.id,
-      required this.name,
-      required this.price,
-      required this.category,
-      required this.tags,
-      required this.description,
-      required this.createdAt,
-      required this.updatedAt});
+  ProductModel({
+    this.id = 0,
+    this.name = '',
+    this.price = 0.0,
+    CategoryModel? category,
+    this.tags = '',
+    this.description = '',
+    DateTime? createdAt,
+    DateTime? updatedAt,
+  })  : category = category ?? CategoryModel.empty(),
+        createdAt = createdAt ?? DateTime.now(),
+        updatedAt = updatedAt ?? DateTime.now();
 
   ProductModel.fromJson(Map<String, dynamic> json)
       : id = json['id'],
@@ -27,8 +30,8 @@ class ProductModel {
         description = json['description'],
         tags = json['tags'],
         category = CategoryModel.fromJson(json['category']),
-        createdAt = DateTime.parse(json['createdAt']),
-        updatedAt = DateTime.parse(json['updatedAt']);
+        createdAt = DateTime.parse(json['created_at']),
+        updatedAt = DateTime.parse(json['updated_at']);
 
   Map<String, dynamic> toJson() {
     return {
@@ -38,8 +41,10 @@ class ProductModel {
       'description': description,
       'tags': tags,
       'category': category.toJson(),
-      'createdAt': createdAt.toString(),
-      'updatedAt': updatedAt.toString()
+      'created_at': createdAt.toString(),
+      'updated_at': updatedAt.toString()
     };
   }
 }
+
+class UninitalizedProductModel extends ProductModel {}

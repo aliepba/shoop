@@ -2,6 +2,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shoop/models/product_model.dart';
+import 'package:shoop/pages/detail_chat.dart';
 import 'package:shoop/providers/cart_provider.dart';
 import 'package:shoop/providers/product_provider.dart';
 import 'package:shoop/theme.dart';
@@ -331,7 +332,11 @@ class _ProductPageState extends State<ProductPage> {
               child: Row(children: [
                 GestureDetector(
                   onTap: () {
-                    Navigator.pushNamed(context, '/detail-chat');
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) =>
+                                DetailChatPage(widget.product)));
                   },
                   child: Container(
                     width: 54,

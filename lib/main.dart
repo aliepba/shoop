@@ -6,7 +6,7 @@ import 'package:shoop/pages/checkout_success.dart';
 import 'package:shoop/pages/detail_chat.dart';
 import 'package:shoop/pages/detail_transaction.dart';
 import 'package:shoop/pages/edit_profile.dart';
-import 'package:shoop/pages/history_page.dart';
+import 'package:shoop/pages/home/history_page.dart';
 import 'package:shoop/pages/home/main_page.dart';
 import 'package:shoop/pages/sign_in_page.dart';
 import 'package:shoop/pages/sign_up_page.dart';
@@ -15,8 +15,12 @@ import 'package:shoop/providers/auth_provider.dart';
 import 'package:shoop/providers/cart_provider.dart';
 import 'package:shoop/providers/product_provider.dart';
 import 'package:shoop/providers/transaction_provider.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_core/firebase_core.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(const MainApp());
 }
 
@@ -39,7 +43,7 @@ class MainApp extends StatelessWidget {
           '/sign-in': (context) => SignInPage(),
           '/sign-up': (context) => SignUpPage(),
           '/home': (context) => MainPage(),
-          '/detail-chat': (context) => DetailChatPage(),
+          // '/detail-chat': (context) => DetailChatPage(),
           '/edit-profile': (context) => EditProfile(),
           // '/product': (context) => ProductPage(),
           '/detail-transaction': (context) => DetailTransaction(),

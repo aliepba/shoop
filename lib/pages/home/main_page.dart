@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:shoop/pages/home/chat_page.dart';
+import 'package:shoop/pages/home/history_page.dart';
 import 'package:shoop/pages/home/home_page.dart';
 import 'package:shoop/pages/home/profile_page.dart';
 import 'package:shoop/pages/home/wishlist_page.dart';
@@ -114,6 +115,9 @@ class _MainPageState extends State<MainPage> {
           break;
         case 3:
           return ProfilePage();
+          break;
+        case 4:
+          return HistoryPage();
           break;
         default:
           return HomePage();

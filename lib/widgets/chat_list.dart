@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:shoop/models/product_model.dart';
+import 'package:shoop/pages/detail_chat.dart';
 import 'package:shoop/theme.dart';
 
 class ChatList extends StatelessWidget {
@@ -8,7 +10,12 @@ class ChatList extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.pushNamed(context, '/detail-chat');
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => DetailChatPage(
+                      UninitalizedProductModel(),
+                    )));
       },
       child: Container(
         margin: EdgeInsets.only(top: 33),
