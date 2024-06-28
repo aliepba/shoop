@@ -1,13 +1,13 @@
 {
   "project_info": {
-    "project_number": "533752385752",
-    "project_id": "shoop-db299",
-    "storage_bucket": "shoop-db299.appspot.com"
+    "project_number": "",
+    "project_id": "shoop-",
+    "storage_bucket": "shoop-db299..com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:533752385752:android:38953f8645dbfd898707ad",
+        "mobilesdk_app_id": "1::android:",
         "android_client_info": {
           "package_name": "com.example.shoop"
         }
@@ -15,7 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyAajU_XQGqdqz30yP4rlbRdXesmK_06pd0"
+          "current_key": ""
         }
       ],
       "services": {
