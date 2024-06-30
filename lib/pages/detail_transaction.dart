@@ -154,4 +154,6 @@ class DetailTransaction extends StatelessWidget {
         body: content(),
         bottomNavigationBar: customBottomNav());
   }
+
+  static empty() {}
 }

@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:shoop/models/transaction_model.dart';
 import 'package:shoop/theme.dart';
 
 class TransactionCard extends StatelessWidget {
-  const TransactionCard({super.key});
+  final TransactionModel transaction;
+  TransactionCard(this.transaction);
 
   @override
   Widget build(BuildContext context) {
@@ -27,16 +29,21 @@ class TransactionCard extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'No Transactions :',
-                style: primaryTextStyle.copyWith(
-                    fontWeight: semiBold,
-                    fontSize: 18,
-                    decoration: TextDecoration.none),
-              ),
-              Text(
-                'TRX/010124/001',
+                'TRX/010124/${transaction.id}',
                 style: priceTextStyle.copyWith(
-                    fontSize: 12, decoration: TextDecoration.none),
+                    fontSize: 16, decoration: TextDecoration.none),
+              ),
+              Container(
+                margin: EdgeInsets.only(top: 4),
+                padding:
+                    EdgeInsets.only(top: 5, bottom: 5, left: 10, right: 10),
+                decoration: BoxDecoration(
+                    color: Colors.greenAccent,
+                    borderRadius: BorderRadius.circular(12)),
+                child: Text(
+                  transaction.status,
+                  style: primaryTextStyle.copyWith(fontWeight: medium),
+                ),
               )
             ],
           ),

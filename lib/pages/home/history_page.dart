@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:provider/provider.dart';
+import 'package:shoop/models/transaction_model.dart';
+import 'package:shoop/providers/auth_provider.dart';
+import 'package:shoop/providers/transaction_provider.dart';
+import 'package:shoop/services/transaction_service.dart';
 import 'package:shoop/theme.dart';
 import 'package:shoop/widgets/transaction_card.dart';
 
@@ -8,6 +13,10 @@ class HistoryPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    AuthProvider authProvider = Provider.of<AuthProvider>(context);
+    TransactionProvider transactionProvider =
+        Provider.of<TransactionProvider>(context);
+
     PreferredSizeWidget header() {
       return AppBar(
         backgroundColor: backgroundColor1,
@@ -21,21 +30,33 @@ class HistoryPage extends StatelessWidget {
     }
 
     Widget content() {
-      return ListView(
-        padding: EdgeInsets.symmetric(horizontal: defaultMargin),
-        children: [
-          TransactionCard(),
-          TransactionCard(),
-          TransactionCard(),
-          TransactionCard(),
-          TransactionCard(),
-          TransactionCard(),
-          TransactionCard(),
-          TransactionCard(),
-          TransactionCard(),
-          TransactionCard(),
-          TransactionCard()
-        ],
+      return FutureBuilder(
+        future: transactionProvider.getTransactions(authProvider.user.token),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return Center(child: CircularProgressIndicator());
+          } else if (snapshot.hasError) {
+            return Center(child: Text('Error: ${snapshot.error}'));
+          } else {
+            return Consumer<TransactionProvider>(
+              builder: (context, transactionProvider, child) {
+                if (transactionProvider.transactions.isEmpty) {
+                  return Center(child: Text('No transactions found.'));
+                } else {
+                  return ListView.builder(
+                    padding: EdgeInsets.symmetric(horizontal: defaultMargin),
+                    itemCount: transactionProvider.transactions.length,
+                    itemBuilder: (context, index) {
+                      final transaction =
+                          transactionProvider.transactions[index];
+                      return TransactionCard(transaction);
+                    },
+                  );
+                }
+              },
+            );
+          }
+        },
       );
     }
 
