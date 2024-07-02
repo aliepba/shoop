@@ -192,7 +192,7 @@ class _ProductPageState extends State<ProductPage> {
         margin: EdgeInsets.only(top: 17),
         decoration: BoxDecoration(
             borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
-            color: backgroundColor1),
+            color: backgroundColor4),
         child: Column(
           children: [
             Container(
@@ -208,12 +208,12 @@ class _ProductPageState extends State<ProductPage> {
                       children: [
                         Text(
                           widget.product.name,
-                          style: primaryTextStyle.copyWith(
+                          style: thirdTextStyle.copyWith(
                               fontSize: 18, fontWeight: semiBold),
                         ),
                         Text(
                           widget.product.category.name,
-                          style: secondaryTextStyle.copyWith(fontSize: 12),
+                          style: thirdTextStyle.copyWith(fontSize: 12),
                         )
                       ],
                     ),
@@ -254,7 +254,7 @@ class _ProductPageState extends State<ProductPage> {
                   top: 20, left: defaultMargin, right: defaultMargin),
               padding: EdgeInsets.all(16),
               decoration: BoxDecoration(
-                  color: backgroundColor2,
+                  color: backgroundColor5,
                   borderRadius: BorderRadius.circular(4)),
               child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -266,7 +266,7 @@ class _ProductPageState extends State<ProductPage> {
                     Text(
                       '\$${widget.product.price}',
                       style: priceTextStyle.copyWith(
-                          fontSize: 16, fontWeight: semiBold),
+                          fontSize: 16, fontWeight: bold),
                     )
                   ]),
             ),
@@ -281,14 +281,14 @@ class _ProductPageState extends State<ProductPage> {
                 children: [
                   Text(
                     'Description',
-                    style: primaryTextStyle.copyWith(fontWeight: medium),
+                    style: thirdTextStyle.copyWith(fontWeight: medium),
                   ),
                   SizedBox(
                     height: 12,
                   ),
                   Text(
                     widget.product.description,
-                    style: subtitleTextStyle.copyWith(fontWeight: light),
+                    style: thirdTextStyle.copyWith(fontWeight: light),
                     textAlign: TextAlign.justify,
                   ),
                 ],
@@ -343,7 +343,7 @@ class _ProductPageState extends State<ProductPage> {
                     height: 54,
                     decoration: BoxDecoration(
                         image: DecorationImage(
-                            image: AssetImage('assets/btn_chat.png'))),
+                            image: AssetImage('assets/btn_msg.png'))),
                   ),
                 ),
                 SizedBox(
@@ -358,7 +358,7 @@ class _ProductPageState extends State<ProductPage> {
                         showSuccessDialog();
                       },
                       style: TextButton.styleFrom(
-                          backgroundColor: primaryColor,
+                          backgroundColor: backgroundColor3,
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(12))),
                       child: Text(

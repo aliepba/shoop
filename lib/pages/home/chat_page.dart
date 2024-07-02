@@ -17,7 +17,7 @@ class ChatPage extends StatelessWidget {
 
     Widget header() {
       return AppBar(
-        backgroundColor: backgroundColor1,
+        backgroundColor: backgroundColor4,
         centerTitle: true,
         title: Text(
           'Message Support',

@@ -2,16 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 double defaultMargin = 30.0;
-
-Color primaryColor = Color(0xff6c5ecf);
-Color secondaryColor = Color(0xff38abbe);
+// 6c5ecf
+Color primaryColor = Color(0xff47585C);
+Color secondaryColor = Color(0xffC8D5BB);
+Color thirdColor = Color(0xFFFFE9D0);
 Color alertColor = Color(0xffed6363);
-Color priceColor = Color(0xff2C96f1);
+Color priceColor = Color(0xffA0937D);
 Color backgroundColor0 = Colors.white;
-Color backgroundColor1 = Color(0xff1f1d2b);
-Color backgroundColor2 = Color(0xff2b2937);
-Color backgroundColor3 = Color(0xff242231);
-Color backgroundColor4 = Color(0xff252836);
+Color backgroundColor1 = Color(0xff71C9CE);
+Color backgroundColor2 = Color(0xff55AD9B);
+Color backgroundColor3 = Color(0xff538392);
+Color backgroundColor4 = Color(0xff47585C);
 Color backgroundColor5 = Color(0xffECEDEF);
 Color primaryTextColor = Color(0xfff1f0f2);
 Color secondaryTextColor = Color(0xff999999);

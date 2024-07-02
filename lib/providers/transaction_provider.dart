@@ -24,6 +24,7 @@ class TransactionProvider with ChangeNotifier {
       List<TransactionModel> transactions =
           await TransactionService().getHistory(token);
       _transactions = transactions;
+      print(transactions);
     } catch (e) {
       print(e);
     }

@@ -42,7 +42,7 @@ class _DetailChatPageState extends State<DetailChatPage> {
       return PreferredSize(
           preferredSize: Size.fromHeight(70),
           child: AppBar(
-            backgroundColor: backgroundColor1,
+            backgroundColor: backgroundColor4,
             centerTitle: false,
             title: Row(
               children: [
@@ -58,7 +58,7 @@ class _DetailChatPageState extends State<DetailChatPage> {
                   children: [
                     Text(
                       'Adudu Store',
-                      style: primaryTextStyle.copyWith(
+                      style: thirdTextStyle.copyWith(
                           fontWeight: medium, fontSize: 14),
                     ),
                     Text(
@@ -148,7 +148,7 @@ class _DetailChatPageState extends State<DetailChatPage> {
                   height: 45,
                   padding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
                   decoration: BoxDecoration(
-                    color: backgroundColor1,
+                    color: backgroundColor4,
                     borderRadius: BorderRadius.circular(12),
                   ),
                   child: Center(

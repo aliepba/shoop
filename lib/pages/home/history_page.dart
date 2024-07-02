@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
 import 'package:shoop/models/transaction_model.dart';
+import 'package:shoop/pages/detail_transaction.dart';
 import 'package:shoop/providers/auth_provider.dart';
 import 'package:shoop/providers/transaction_provider.dart';
 import 'package:shoop/services/transaction_service.dart';
@@ -19,14 +20,14 @@ class HistoryPage extends StatelessWidget {
 
     PreferredSizeWidget header() {
       return AppBar(
-        backgroundColor: backgroundColor1,
-        centerTitle: true,
-        title: Text(
-          'History Transaction',
-          style: thirdTextStyle,
-        ),
-        elevation: 0,
-      );
+          backgroundColor: backgroundColor4,
+          centerTitle: true,
+          title: Text(
+            'History Transaction',
+            style: thirdTextStyle,
+          ),
+          elevation: 0,
+          automaticallyImplyLeading: false);
     }
 
     Widget content() {
@@ -49,7 +50,17 @@ class HistoryPage extends StatelessWidget {
                     itemBuilder: (context, index) {
                       final transaction =
                           transactionProvider.transactions[index];
-                      return TransactionCard(transaction);
+                      return GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      DetailTransaction(transaction)));
+                        },
+                        child: TransactionCard(transaction),
+                      );
+                      // return TransactionCard(transaction);
                     },
                   );
                 }

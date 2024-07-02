@@ -14,7 +14,7 @@ class ProfilePage extends StatelessWidget {
 
     Widget header() {
       return AppBar(
-        backgroundColor: backgroundColor1,
+        backgroundColor: backgroundColor4,
         automaticallyImplyLeading: false,
         elevation: 0,
         flexibleSpace: SafeArea(
@@ -36,12 +36,12 @@ class ProfilePage extends StatelessWidget {
                 children: [
                   Text(
                     'Hallo, ${user.name}',
-                    style: primaryTextStyle.copyWith(
+                    style: thirdTextStyle.copyWith(
                         fontSize: 24, fontWeight: semiBold),
                   ),
                   Text(
                     '${user.email}',
-                    style: subtitleTextStyle.copyWith(fontSize: 16),
+                    style: thirdTextStyle.copyWith(fontSize: 16),
                   )
                 ],
               )),

@@ -48,7 +48,7 @@ class MainApp extends StatelessWidget {
           // '/detail-chat': (context) => DetailChatPage(),
           '/edit-profile': (context) => EditProfile(),
           // '/product': (context) => ProductPage(),
-          '/detail-transaction': (context) => DetailTransaction(),
+          // '/detail-transaction': (context) => DetailTransaction(),
           '/transaction-history': (context) => HistoryPage(),
           '/cart': (context) => CartPage(),
           '/checkout': (context) => CheckoutPage(),

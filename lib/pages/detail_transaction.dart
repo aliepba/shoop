@@ -1,16 +1,30 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:provider/provider.dart';
+import 'package:shoop/models/detail_transaction_model.dart';
+import 'package:shoop/models/transaction_model.dart';
+import 'package:shoop/providers/auth_provider.dart';
 import 'package:shoop/theme.dart';
 
-class DetailTransaction extends StatelessWidget {
-  const DetailTransaction({super.key});
+class DetailTransaction extends StatefulWidget {
+  final TransactionModel transaction;
+  DetailTransaction(this.transaction);
 
   @override
+  State<DetailTransaction> createState() => _DetailTransactionState();
+
+  static empty() {}
+}
+
+class _DetailTransactionState extends State<DetailTransaction> {
+  @override
   Widget build(BuildContext context) {
+    AuthProvider authProvider = Provider.of<AuthProvider>(context);
+
     PreferredSizeWidget header() {
       return AppBar(
-        backgroundColor: backgroundColor1,
+        backgroundColor: backgroundColor4,
         centerTitle: true,
         title: Text(
           'Detail Invoice',
@@ -27,12 +41,15 @@ class DetailTransaction extends StatelessWidget {
       );
     }
 
-    Widget detailProduct() {
+    Widget detailProduct(DetailTransactionModel detail) {
       return Container(
         margin: EdgeInsets.only(left: 12, right: 12, top: 15),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [Text('NB550'), Text('4 * \$25')],
+          children: [
+            Text(detail.name),
+            Text('${detail.quantity} * ${detail.price}')
+          ],
         ),
       );
     }
@@ -51,7 +68,7 @@ class DetailTransaction extends StatelessWidget {
                       primaryTextStyle.copyWith(fontSize: 16, fontWeight: bold),
                 ),
                 Text(
-                  'TRX/010424/001',
+                  'TRX/010424/${widget.transaction.id}',
                   style: primaryTextStyle.copyWith(
                       fontSize: 16, fontWeight: medium),
                 )
@@ -66,7 +83,30 @@ class DetailTransaction extends StatelessWidget {
             margin: EdgeInsets.only(left: 12, right: 12, top: 15),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [Text('Transaction Name'), Text('Adudu')],
+              children: [
+                Text('Transaction Name'),
+                Text(authProvider.user.name)
+              ],
+            ),
+          ),
+          Container(
+            margin: EdgeInsets.only(left: 12, right: 12, top: 15),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text('Payment Type'),
+                Text('${widget.transaction.payment}')
+              ],
+            ),
+          ),
+          Container(
+            margin: EdgeInsets.only(left: 12, right: 12, top: 15),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text('Address'),
+                Text('${widget.transaction.address}')
+              ],
             ),
           ),
           Container(
@@ -83,28 +123,39 @@ class DetailTransaction extends StatelessWidget {
           ),
           Container(
             child: Column(
-              children: [detailProduct(), detailProduct(), detailProduct()],
+              children: widget.transaction.detailTransaction
+                  .map((detail) => detailProduct(detail))
+                  .toList(),
             ),
           ),
           Container(
             margin: EdgeInsets.only(left: 12, right: 12, top: 15),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [Text('Total Price'), Text('\$100')],
+              children: [
+                Text('Total Price'),
+                Text('\$${widget.transaction.totalPrice}')
+              ],
             ),
           ),
           Container(
             margin: EdgeInsets.only(left: 12, right: 12, top: 15),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [Text('Shipping Price'), Text('\$90')],
+              children: [
+                Text('Shipping Price'),
+                Text('\$${widget.transaction.shippingPrice}')
+              ],
             ),
           ),
           Container(
             margin: EdgeInsets.only(left: 12, right: 12, top: 15),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [Text('Total Payment'), Text('\$190')],
+              children: [
+                Text('Total Payment'),
+                Text('\$${widget.transaction.grandTotal}')
+              ],
             ),
           )
         ],
@@ -131,14 +182,13 @@ class DetailTransaction extends StatelessWidget {
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(12))),
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      'Continue to Shopping',
+                      'Go Find Shoes',
                       style: thirdTextStyle.copyWith(
                           fontSize: 16, fontWeight: semiBold),
                     ),
-                    Icon(Icons.arrow_forward, color: primaryTextColor)
                   ],
                 ),
               ),
@@ -154,6 +204,4 @@ class DetailTransaction extends StatelessWidget {
         body: content(),
         bottomNavigationBar: customBottomNav());
   }
-
-  static empty() {}
 }

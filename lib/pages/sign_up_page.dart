@@ -82,7 +82,7 @@ class _SignUpPageState extends State<SignUpPage> {
             Text(
               text,
               style:
-                  blackTextStyle.copyWith(fontSize: 16, fontWeight: semiBold),
+                  primaryTextStyle.copyWith(fontSize: 16, fontWeight: semiBold),
             ),
             SizedBox(
               height: 12,
@@ -97,10 +97,7 @@ class _SignUpPageState extends State<SignUpPage> {
               child: Center(
                 child: Row(
                   children: [
-                    Image.asset(
-                      icAsset,
-                      width: 17,
-                    ),
+                    Image.asset(icAsset, width: 17, color: backgroundColor1),
                     SizedBox(
                       width: 16,
                     ),
@@ -112,7 +109,7 @@ class _SignUpPageState extends State<SignUpPage> {
                         decoration: InputDecoration.collapsed(
                           hintText: hintText,
                           hintStyle:
-                              subtitleTextStyle.copyWith(fontWeight: semiBold),
+                              subtitleTextStyle.copyWith(fontWeight: light),
                         ),
                       ),
                     )

@@ -73,8 +73,7 @@ class _SignInPageState extends State<SignInPage> {
           children: [
             Text(
               'Email Address',
-              style:
-                  primaryTextStyle.copyWith(fontSize: 16, fontWeight: medium),
+              style: primaryTextStyle.copyWith(fontSize: 16, fontWeight: bold),
             ),
             SizedBox(
               height: 12,
@@ -84,15 +83,13 @@ class _SignInPageState extends State<SignInPage> {
               padding: EdgeInsets.symmetric(horizontal: 16),
               decoration: BoxDecoration(
                   color: backgroundColor0,
-                  border: Border.all(color: backgroundColor1),
+                  border: Border.all(color: backgroundColor4),
                   borderRadius: BorderRadius.circular(12)),
               child: Center(
                 child: Row(
                   children: [
-                    Image.asset(
-                      'assets/ic_email.png',
-                      width: 17,
-                    ),
+                    Image.asset('assets/ic_email.png',
+                        width: 17, color: backgroundColor1),
                     SizedBox(
                       width: 16,
                     ),
@@ -103,7 +100,7 @@ class _SignInPageState extends State<SignInPage> {
                         decoration: InputDecoration.collapsed(
                           hintText: 'Your Email Address',
                           hintStyle:
-                              primaryTextStyle.copyWith(fontWeight: semiBold),
+                              primaryTextStyle.copyWith(fontWeight: light),
                         ),
                       ),
                     )
@@ -123,9 +120,8 @@ class _SignInPageState extends State<SignInPage> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'Email Address',
-              style:
-                  primaryTextStyle.copyWith(fontSize: 16, fontWeight: medium),
+              'Password',
+              style: primaryTextStyle.copyWith(fontSize: 16, fontWeight: bold),
             ),
             SizedBox(
               height: 12,
@@ -135,7 +131,7 @@ class _SignInPageState extends State<SignInPage> {
               padding: EdgeInsets.symmetric(horizontal: 16),
               decoration: BoxDecoration(
                   color: backgroundColor0,
-                  border: Border.all(color: backgroundColor1),
+                  border: Border.all(color: backgroundColor4),
                   borderRadius: BorderRadius.circular(12)),
               child: Center(
                 child: Row(
@@ -143,6 +139,7 @@ class _SignInPageState extends State<SignInPage> {
                     Image.asset(
                       'assets/ic_password.png',
                       width: 17,
+                      color: backgroundColor1,
                     ),
                     SizedBox(
                       width: 16,
@@ -155,7 +152,7 @@ class _SignInPageState extends State<SignInPage> {
                         decoration: InputDecoration.collapsed(
                           hintText: 'Your Password',
                           hintStyle:
-                              primaryTextStyle.copyWith(fontWeight: semiBold),
+                              primaryTextStyle.copyWith(fontWeight: light),
                         ),
                       ),
                     )

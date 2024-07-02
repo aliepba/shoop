@@ -34,7 +34,6 @@ class TransactionService {
   Future<List<TransactionModel>> getHistory(String token) async {
     var url = '$baseUrl/transaction/history';
     var headers = {'Content-Type': 'application/json', 'Authorization': token};
-
     var response = await http.get(Uri.parse(url), headers: headers);
 
     if (response.statusCode == 200) {
@@ -43,7 +42,6 @@ class TransactionService {
       for (var item in data) {
         transactions.add(TransactionModel.fromJson(item));
       }
-      print(transactions);
       return transactions;
     } else {
       throw Exception('Failed to get transaction');

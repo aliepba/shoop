@@ -31,6 +31,7 @@ class _MainPageState extends State<MainPage> {
         child: Image.asset(
           'assets/ic_cart.png',
           width: 20,
+          color: backgroundColor0,
         ),
       );
     }
@@ -39,13 +40,13 @@ class _MainPageState extends State<MainPage> {
       return ClipRRect(
         borderRadius: BorderRadius.vertical(top: Radius.circular(30)),
         child: BottomNavigationBar(
-            backgroundColor: backgroundColor4,
+            backgroundColor: primaryColor,
             type: BottomNavigationBarType.fixed,
             currentIndex: pageProvider.currentIndex,
             onTap: (value) {
               pageProvider.currentIndex = value;
             },
-            selectedItemColor: primaryColor,
+            selectedItemColor: backgroundColor5,
             unselectedItemColor: Colors.grey,
             items: [
               BottomNavigationBarItem(
@@ -55,7 +56,7 @@ class _MainPageState extends State<MainPage> {
                       'assets/ic_home_off.png',
                       width: 21,
                       color: pageProvider.currentIndex == 0
-                          ? primaryColor
+                          ? thirdColor
                           : secondaryColor,
                     ),
                   ),
@@ -67,7 +68,7 @@ class _MainPageState extends State<MainPage> {
                       'assets/ic_chat_off.png',
                       width: 20,
                       color: pageProvider.currentIndex == 1
-                          ? primaryColor
+                          ? thirdColor
                           : secondaryColor,
                     ),
                   ),
@@ -79,7 +80,7 @@ class _MainPageState extends State<MainPage> {
                       'assets/ic_favorite_off.png',
                       width: 20,
                       color: pageProvider.currentIndex == 2
-                          ? primaryColor
+                          ? thirdColor
                           : secondaryColor,
                     ),
                   ),
@@ -91,7 +92,7 @@ class _MainPageState extends State<MainPage> {
                     'assets/ic_profile_off.png',
                     width: 20,
                     color: pageProvider.currentIndex == 3
-                        ? primaryColor
+                        ? thirdColor
                         : secondaryColor,
                   ),
                 ),
@@ -103,7 +104,7 @@ class _MainPageState extends State<MainPage> {
                     child: Icon(
                       Icons.document_scanner,
                       color: pageProvider.currentIndex == 4
-                          ? primaryColor
+                          ? thirdColor
                           : secondaryColor,
                     ),
                   ),
