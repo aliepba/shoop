@@ -3,8 +3,8 @@ import 'package:provider/provider.dart';
 import 'package:shoop/pages/cart_page.dart';
 import 'package:shoop/pages/checkout_page.dart';
 import 'package:shoop/pages/checkout_success.dart';
-import 'package:shoop/pages/detail_chat.dart';
-import 'package:shoop/pages/detail_transaction.dart';
+// import 'package:shoop/pages/detail_chat.dart';
+// import 'package:shoop/pages/detail_transaction.dart';
 import 'package:shoop/pages/edit_profile.dart';
 import 'package:shoop/pages/home/history_page.dart';
 import 'package:shoop/pages/home/main_page.dart';
@@ -16,7 +16,7 @@ import 'package:shoop/providers/cart_provider.dart';
 import 'package:shoop/providers/page_provider.dart';
 import 'package:shoop/providers/product_provider.dart';
 import 'package:shoop/providers/transaction_provider.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
+// import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 
 void main() async {
